@@ -2,6 +2,7 @@ package com.example.backend.services;
 
 import com.example.backend.models.ProductCategory;
 import com.example.backend.repositories.ProductCategoryRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ public class ProductService {
     public ProductService(ProductCategoryRepo categoryRepo) {
         this.categoryRepo = categoryRepo;
     }
+    @Transactional
     public Optional<ProductCategory> getCategoryProducts(int categoryID) {
         return categoryRepo.findById(categoryID);
     }

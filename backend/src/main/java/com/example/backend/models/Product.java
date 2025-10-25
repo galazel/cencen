@@ -1,5 +1,6 @@
 package com.example.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -16,8 +17,8 @@ public class Product {
     private String image;
     private int stocks;
     private double price;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoryId")
-    @JsonIgnore
-    private ProductCategory category;
+    @ManyToOne
+    @JoinColumn(name = "subCategoryID")
+    @JsonBackReference
+    private ProductSubCategory subCategory;
 }

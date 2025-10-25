@@ -1,6 +1,6 @@
 package com.example.backend.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,5 +16,7 @@ public class ProductCategory {
     private String categoryName;
     private String description;
     @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    @JsonManagedReference
+    private List<ProductSubCategory> subCategories;
+
 }
