@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "../LandingPage/carousel";
+import Carousel from "./Carousel";
 import Header from "../common/Header";
 
 export default function Hero() {
