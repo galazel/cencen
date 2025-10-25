@@ -31,9 +31,9 @@ public class ProductController {
         return " hello";
     }
     @GetMapping("/{categoryID}")
-    private ResponseEntity<List<ProductCategory>> getCategoryProducts(@PathVariable int categoryId)
+    private ResponseEntity<List<ProductCategory>> getCategoryProducts(@PathVariable int categoryID)
     {
-        Optional<ProductCategory> getAllProducts = service.getCategoryProducts(categoryId);
+        Optional<ProductCategory> getAllProducts = service.getCategoryProducts(categoryID);
         return getAllProducts.isPresent() ? new ResponseEntity<>(getAllProducts.stream().toList(), HttpStatusCode.valueOf(200)) : new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 }
