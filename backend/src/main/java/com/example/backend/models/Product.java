@@ -1,5 +1,6 @@
 package com.example.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,5 +18,6 @@ public class Product {
     private double price;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId")
+    @JsonIgnore
     private ProductCategory category;
 }

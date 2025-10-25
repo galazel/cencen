@@ -1,6 +1,7 @@
 package com.example.backend.controllers;
 
-import com.example.backend.dto.ProductCategoryDTO;
+
+import com.example.backend.models.Product;
 import com.example.backend.models.ProductCategory;
 import com.example.backend.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,9 @@ public class ProductController {
         return " hello";
     }
     @GetMapping("/{categoryID}")
-    private ResponseEntity<List<ProductCategory>> getCategoryProducts(@PathVariable int categoryID)
+    private ResponseEntity<List<Product>> getCategoryProducts(@PathVariable int categoryID)
     {
         Optional<ProductCategory> getAllProducts = service.getCategoryProducts(categoryID);
-        return getAllProducts.isPresent() ? new ResponseEntity<>(getAllProducts.stream().toList(), HttpStatusCode.valueOf(200)) : new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        return getAllProducts.isPresent() ? new ResponseEntity<>(getAllProducts.stream().toList().get(0).getProducts(), HttpStatusCode.valueOf(200)) : new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 }
